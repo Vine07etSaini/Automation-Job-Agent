@@ -4,3 +4,14 @@ __pycache__/
 .env
 storage/
 .pytest_cache/
+resume*.pdf
+config/profile.imported.yaml
+config/profile.yaml.bak
+
+# Claude Code
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
+# Personal learning notes
+LEARNING.md

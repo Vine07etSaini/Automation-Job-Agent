@@ -56,6 +56,10 @@ class Preferences(BaseModel):
     locations: list[str] = []
     min_salary_lpa: float | None = None
     notice_period_days: int | None = None
+    # Used only to answer portal screening questions; left unset, those questions go to you.
+    expected_ctc_lpa: float | None = None
+    current_ctc_lpa: float | None = None
+    relocate: bool | None = None
 
 
 class Profile(BaseModel):
@@ -69,6 +73,25 @@ class Profile(BaseModel):
     experience: list[Experience] = []
     education: list[Education] = []
     preferences: Preferences
+
+
+class ExtractedProject(BaseModel):
+    name: str
+    tech: list[str] = []
+    description: str = ""
+    github: str = ""
+
+
+class ResumeExtract(BaseModel):
+    """What can be read off a resume PDF (no preferences, equivalents or learning goals: resumes have none)."""
+
+    personal: Personal
+    summary: str = ""
+    total_experience_years: float | None = None
+    skills: list[str] = []
+    projects: list[ExtractedProject] = []
+    experience: list[Experience] = []
+    education: list[Education] = []
 
 
 # ---------------------------------------------------------------- settings
@@ -97,6 +120,8 @@ class Settings(BaseModel):
     max_applications_per_day: int = 25
     per_portal_cap: int = 10
     max_jobs_per_run: int = 30
+    apply_engine: str = "script"   # script = selectors + rules | cua = Gemini computer-use agent answers the drawer
+    cua_max_steps: int = 25
     locked_sections: list[str] = ["experience", "education"]
     editable_sections: list[str] = ["skills", "projects"]
     max_keyword_repeats: int = 2

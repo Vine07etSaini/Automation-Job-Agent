@@ -1,4 +1,4 @@
-"""Tailor resume content with Gemini, run it through the Honesty Guard and render a PDF."""
+"""Tailor resume content with the LLM, run it through the Honesty Guard and render a PDF."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from job_copilot.agents.honesty_guard import GuardReport, guard
 from job_copilot.agents.skill_bank import SkillBank
 from job_copilot.config import IST, RESUMES_DIR, TEMPLATES_DIR, ensure_dirs
-from job_copilot.llm.gemini import Gemini
+from job_copilot.llm.chat import LLM
 from job_copilot.models import JDAnalysis, JobPosting, MatchResult, Profile, ProjectRewrite, TailoredContent
 
 log = logging.getLogger(__name__)
@@ -42,7 +42,7 @@ def base_content(profile: Profile) -> TailoredContent:
 
 
 def tailor(profile: Profile, posting: JobPosting, analysis: JDAnalysis, match: MatchResult, bank: SkillBank,
-           llm: Gemini | None, max_repeats: int = 2) -> tuple[TailoredContent, GuardReport]:
+           llm: LLM | None, max_repeats: int = 2) -> tuple[TailoredContent, GuardReport]:
     if llm is None:
         draft = _reorder_only(profile, match)
     else:

@@ -20,9 +20,11 @@ playwright install chromium
 # 2. Configure secrets
 copy .env.example .env            # macOS/Linux: cp .env.example .env
 #    then set GEMINI_API_KEY (https://aistudio.google.com/apikey) and optionally SMTP_* for email
+#    and NAUKRI_EMAIL / NAUKRI_PASSWORD for automatic Naukri login
 
 # 3. Fill in your real data
 #    config/profile.yaml   - skills (Verified Skill Bank), projects, experience, preferences
+#                          (or generate a draft from your resume: python main.py import-resume resume.pdf)
 #    config/settings.yaml  - threshold, caps, mode
 
 # 4. Verify everything
@@ -33,8 +35,9 @@ python main.py check
 
 | Command | What it does |
 |---|---|
+| `python main.py import-resume resume.pdf` | Build a draft `config/profile.imported.yaml` from your resume PDF (needs `GEMINI_API_KEY`); edit it, then `python main.py import-resume --apply` to replace `profile.yaml` (backup kept). Fill `preferences` by hand |
 | `python main.py run --source sample --no-email` | Try the full pipeline offline on `data/sample_jobs.json` |
-| `python main.py login naukri` | One-time: log in to Naukri in a visible browser (session is saved) |
+| `python main.py login naukri` | Log in to Naukri (automatic with `NAUKRI_EMAIL`/`NAUKRI_PASSWORD` in `.env`, else by hand in a visible browser; session is saved). With credentials set, expired sessions are also re-logged automatically during `apply` |
 | `python main.py run` | Daily run: search Naukri → freshness/dedupe → Gemini JD analysis → score → tailored PDF → report email |
 | `python main.py review` | Approve / reject pending jobs, open the tailored resume |
 | `python main.py apply --max 5` | Apply to approved jobs (daily + per-portal caps) |

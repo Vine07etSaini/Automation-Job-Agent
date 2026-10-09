@@ -1,4 +1,4 @@
-"""Extract structured requirements from a job description (Gemini, with a heuristic fallback)."""
+"""Extract structured requirements from a job description (LLM, with a heuristic fallback)."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ import logging
 import re
 
 from job_copilot.agents.skill_bank import SkillBank, find_term
-from job_copilot.llm.gemini import Gemini
+from job_copilot.llm.chat import LLM
 from job_copilot.models import JDAnalysis, JobPosting, SkillRequirement
 
 log = logging.getLogger(__name__)
@@ -26,7 +26,7 @@ Extract only what the job description actually says. Do not guess or add skills 
 - recruiter_email / recruiter_phone: only if literally present in the text, else null."""
 
 
-def analyze_jd(posting: JobPosting, bank: SkillBank, llm: Gemini | None = None) -> JDAnalysis:
+def analyze_jd(posting: JobPosting, bank: SkillBank, llm: LLM | None = None) -> JDAnalysis:
     if llm is not None:
         prompt = (
             f"Job title: {posting.title}\nCompany: {posting.company}\n"
@@ -36,7 +36,7 @@ def analyze_jd(posting: JobPosting, bank: SkillBank, llm: Gemini | None = None) 
         )
         analysis = llm.generate_json(prompt, JDAnalysis, system=SYSTEM)
     else:
-        log.info("Gemini not configured; using heuristic JD analysis for %s", posting.title)
+        log.info("No LLM configured; using heuristic JD analysis for %s", posting.title)
         analysis = heuristic_analysis(posting, bank)
     return _fill_from_text(analysis, posting)
 

@@ -24,6 +24,8 @@ RESUMES_DIR = STORAGE_DIR / "resumes"
 REPORTS_DIR = STORAGE_DIR / "reports"
 BROWSER_DIR = STORAGE_DIR / "browser"
 DB_PATH = STORAGE_DIR / "tracker.db"
+PROFILE_PATH = CONFIG_DIR / "profile.yaml"
+PROFILE_DRAFT_PATH = CONFIG_DIR / "profile.imported.yaml"
 
 IST = timezone(timedelta(hours=5, minutes=30), "IST")
 
@@ -45,14 +47,14 @@ def get_settings() -> Settings:
     return Settings.model_validate(_load_yaml(CONFIG_DIR / "settings.yaml"))
 
 
-def get_profile() -> Profile:
+def get_profile(path: Path = PROFILE_PATH) -> Profile:
     # Not cached: the agent may edit project descriptions at runtime.
-    return Profile.model_validate(_load_yaml(CONFIG_DIR / "profile.yaml"))
+    return Profile.model_validate(_load_yaml(path))
 
 
-def save_profile(profile: Profile) -> None:
+def save_profile(profile: Profile, path: Path = PROFILE_PATH) -> None:
     data = profile.model_dump(mode="json", exclude_none=True)
-    with open(CONFIG_DIR / "profile.yaml", "w", encoding="utf-8") as f:
+    with open(path, "w", encoding="utf-8") as f:
         yaml.safe_dump(data, f, sort_keys=False, allow_unicode=True, width=100)
 
 
@@ -77,6 +79,22 @@ def get_email_config() -> EmailConfig:
         password=os.getenv("SMTP_PASSWORD", ""),
         to=os.getenv("EMAIL_TO", "") or os.getenv("SMTP_USER", ""),
     )
+
+
+@dataclass(frozen=True)
+class PortalCredentials:
+    user: str
+    password: str
+
+    @property
+    def configured(self) -> bool:
+        return bool(self.user and self.password)
+
+
+def get_portal_credentials(portal: str) -> PortalCredentials:
+    """Login for a job portal from .env, e.g. NAUKRI_EMAIL / NAUKRI_PASSWORD."""
+    prefix = portal.upper()
+    return PortalCredentials(user=os.getenv(f"{prefix}_EMAIL", ""), password=os.getenv(f"{prefix}_PASSWORD", ""))
 
 
 def setup_logging(level: int = logging.INFO) -> None:

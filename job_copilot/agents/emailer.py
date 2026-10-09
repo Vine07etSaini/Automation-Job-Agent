@@ -28,9 +28,14 @@ def send_email(subject: str, body: str, attachments: list[Path] = (), cfg: Email
         ctype, _ = mimetypes.guess_type(path.name)
         maintype, subtype = (ctype or "application/octet-stream").split("/", 1)
         msg.add_attachment(path.read_bytes(), maintype=maintype, subtype=subtype, filename=path.name)
-    with smtplib.SMTP(cfg.host, cfg.port, timeout=30) as smtp:
-        smtp.starttls()
-        smtp.login(cfg.user, cfg.password)
-        smtp.send_message(msg)
+    try:
+        with smtplib.SMTP(cfg.host, cfg.port, timeout=30) as smtp:
+            smtp.starttls()
+            smtp.login(cfg.user, cfg.password)
+            smtp.send_message(msg)
+    except (smtplib.SMTPException, OSError) as e:
+        # The report is already saved locally; a mail problem must not abort the run.
+        log.error("Could not send '%s': %s. Check SMTP_* in .env (Gmail needs an App Password).", subject, e)
+        return False
     log.info("Email sent: %s", subject)
     return True

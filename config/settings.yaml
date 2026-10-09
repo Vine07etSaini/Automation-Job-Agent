@@ -12,6 +12,8 @@ mode: review                    # review = you approve each apply | auto = apply
 max_applications_per_day: 25
 per_portal_cap: 10
 max_jobs_per_run: 30            # max job pages opened per portal per run
+apply_engine: script            # script = selectors + rules | cua = Gemini computer-use agent handles the screening drawer
+cua_max_steps: 25               # hard cap on agent actions per application
 
 # ---------- Resume ----------
 locked_sections: [experience, education]

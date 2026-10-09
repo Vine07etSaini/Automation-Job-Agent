@@ -1,87 +1,167 @@
-# Single source of truth about you. Fill this in with your real data.
-# The agent never edits `experience` or `education`.
-
 personal:
-  name: Your Name
-  email: you@example.com
-  phone: "+91-90000-00000"
-  location: Bengaluru, India
-  linkedin: https://linkedin.com/in/your-handle
-  github: https://github.com/your-handle
-  portfolio: ""
-
-summary: >-
-  Backend engineer with 4 years of experience building Python services,
-  REST APIs and data pipelines on AWS.
-
-total_experience_years: 4
-
-# ----- Verified Skill Bank -----
-# The agent may only surface skills listed here. `aliases` are alternative
-# spellings that count as the same skill.
+  name: Vineet Saini
+  email: vineetsn1803@gmail.com
+  phone: +91 9871138065
+  location: Hinjewadi Ph.1, Pune (M.H., INDIA) - 411057
+  linkedin: https://www.linkedin.com/in/vineet-saini-profile/
+  github: https://github.com/Vine07etSaini
+  portfolio: ''
+summary: AI Engineer with 1+ year of experience building production-grade RAG pipelines and LLM-powered
+  agents using Python, LangChain, FastAPI, and vector databases. Currently developing an incident-resolution
+  agent at Cognizant that surfaces root causes and similar past tickets to speed up issue resolution.
+  Previously delivered a RAG-powered legal AI platform to production. Backed by a strong backend foundation
+  in designing secure, scalable APIs with Django/DRF, JWT/OAuth, Celery, and Redis.
+total_experience_years: 1.0
 skills:
-  - {name: Python, aliases: [python3], years: 4}
-  - {name: FastAPI, years: 2}
-  - {name: Django, years: 2}
-  - {name: REST APIs, aliases: [REST, RESTful APIs, RESTful], years: 4}
-  - {name: SQL, years: 4}
-  - {name: PostgreSQL, aliases: [Postgres], years: 3}
-  - {name: AWS, aliases: [Amazon Web Services], years: 3}
-  - {name: Docker, years: 2}
-  - {name: Git, years: 4}
-  - {name: Playwright, years: 1}
-  - {name: Pandas, years: 3}
-  - {name: LLM, aliases: [Large Language Models, GenAI, Generative AI], years: 1}
-
-# Approved equivalents: if a JD asks for the key, the listed skill of yours may
-# be surfaced instead (e.g. JD says "GCP", you know "AWS" -> "cloud" match).
+- name: Retrieval-Augmented Generation (RAG)
+  aliases: []
+- name: LangChain
+  aliases: []
+- name: LLM Integration
+  aliases: []
+- name: Prompt Engineering
+  aliases: []
+- name: AI Agents
+  aliases: []
+- name: Semantic Search
+  aliases: []
+- name: Embeddings
+  aliases: []
+- name: Generative AI APIs (Mistral AI)
+  aliases: []
+- name: ChromaDB
+  aliases: []
+- name: Python
+  aliases:
+  - python3
+- name: SQL
+  aliases: []
+- name: JavaScript
+  aliases: []
+- name: TypeScript
+  aliases: []
+- name: FastAPI
+  aliases: []
+- name: Django
+  aliases: []
+- name: Django REST Framework
+  aliases: []
+- name: Flask
+  aliases: []
+- name: REST API Design
+  aliases: []
+- name: Celery
+  aliases: []
+- name: JWT/OAuth
+  aliases: []
+- name: PostgreSQL
+  aliases:
+  - Postgres
+- name: MySQL
+  aliases: []
+- name: MongoDB
+  aliases: []
+- name: Redis
+  aliases: []
+- name: React.js
+  aliases: []
+- name: Tailwind CSS
+  aliases: []
+- name: Zustand
+  aliases: []
+- name: Git
+  aliases: []
+- name: Data Structures & Algorithms
+  aliases: []
+- name: Object-Oriented Programming (OOP)
+  aliases: []
 equivalents:
-  GCP: [AWS]
-  Azure: [AWS]
-  MySQL: [PostgreSQL]
-  Flask: [FastAPI, Django]
-
-# Skills you are learning (never put on the resume, used for skill-gap report)
-learning_goals: [Kubernetes, Terraform]
-
-# ----- Projects (descriptions are editable by the agent, within guardrails) -----
+  GCP:
+  - AWS
+  Azure:
+  - AWS
+  MySQL:
+  - PostgreSQL
+  Flask:
+  - FastAPI
+  - Django
+learning_goals:
+- Kubernetes
+- Terraform
 projects:
-  - id: job-copilot
-    name: AI Job Copilot
-    github: https://github.com/your-handle/job-copilot
-    tech: [Python, Playwright, LLM, SQL]
-    on_resume: true
-    description: >-
-      Agent that discovers jobs, scores them against my profile and tailors my
-      resume for each application.
-  - id: order-service
-    name: Order Processing Service
-    github: https://github.com/your-handle/order-service
-    tech: [Python, FastAPI, PostgreSQL, Docker, AWS]
-    on_resume: true
-    description: >-
-      High-throughput order processing REST API handling 2k requests per second
-      with async workers and PostgreSQL.
-
-# ----- LOCKED: never modified by the agent -----
+- id: eco-climate-change-awareness-platform
+  name: ECO – Climate Change Awareness Platform
+  github: ''
+  tech:
+  - React.js
+  - Tailwind
+  - Zustand
+  - LangChain
+  - RAG
+  on_resume: true
+  description: Built an AI agent (RAG + LangChain) integrated with climate APIs to generate personalised,
+    actionable recommendations for reducing carbon footprint. Delivered real-time climate data visualisation
+    and sustainability insights through a responsive React interface.
+- id: polysearch-ai-cross-platform-search-engine
+  name: PolySearch AI – Cross-platform Search Engine
+  github: ''
+  tech:
+  - Python
+  - Mistral AI
+  - Google & YouTube APIs
+  on_resume: true
+  description: Built an AI-driven search engine aggregating articles and videos across platforms using
+    generative AI query expansion. Improved content discovery efficiency by 30% through integrations with
+    Google, YouTube, and Mistral AI APIs.
+- id: sarthi-youtube-playlist-reminder-chrome-extension
+  name: Sarthi – YouTube Playlist Reminder Chrome Extension
+  github: ''
+  tech:
+  - JavaScript
+  - Chrome APIs
+  on_resume: true
+  description: Published a Chrome extension that lets students set reminders directly from YouTube playlists
+    using activeTab, scripting, and storage APIs.
 experience:
-  - title: Software Engineer
-    company: Example Tech Pvt Ltd
-    location: Bengaluru
-    start: Jan 2022
-    end: Present
-    bullets:
-      - Built and maintained Python microservices serving 1M+ daily requests.
-      - Reduced API latency by 40% by introducing caching and query tuning.
-
+- title: Jr. Software Engineer
+  company: Cognizant Technology Solutions
+  location: 'Pune, Maharashtra, India'
+  start: November 2025
+  end: Present
+  bullets:
+  - Building an internal AI agent (ServiceNow Incident Ticket Agent) that helps support engineers resolve
+    recurring production incidents faster.
+  - Developed a RAG pipeline over5,000+ historical ServiceNow ticketsto detect recurring incident patterns
+    and match new issues to previously resolved ones.
+  - Agent surfaces the probable root cause, a recommended resolution, and links to thetop 3 similar past
+    incidents, reducing triage time and repeat troubleshooting effort.
+  - Built with Python, LangChain, FastAPI, ServiceNow REST API integration, and ChromaDB for semantic
+    search over historical tickets.
+- title: Backend Developer Intern
+  company: LexiAI (Legal Tech Startup)
+  location: ''
+  start: April 2025
+  end: October 2025
+  bullets:
+  - Built and maintained REST APIs with Django/DRF; profiled and optimised queries, cutting query load
+    by30%.
+  - Designed and deployed a Retrieval-Augmented Generation (RAG) pipeline powering AI-driven legal query
+    responses for LexiAI, an AI legal-tech platform.
+  - Implemented JWT/OAuth authentication with role-based access control and CSRF/XSS protections.
+  - Integrated React frontend with backend APIs, reducing page load time by 25% and API latency by 150ms.
+  - Set up asynchronous background jobs and notifications with Celery + Redis, and integrated a payment
+    gateway for subscription billing.
+  - Live Project:LexiAI — AI-powered Legal Tech Platform.
 education:
-  - degree: B.Tech, Computer Science
-    institution: Example University
-    year: "2021"
-
-# ----- Job preferences -----
+- degree: Bachelor of Computer Applications (BCA)
+  institution: Graphic Era University
+  year: '2025'
 preferences:
-  roles: [Python Developer, Backend Developer]
-  locations: [Bengaluru, Remote]
-  min_salary_lpa: 12
+  roles:
+  - Python Developer
+  - Backend Developer
+  locations:
+  - Bengaluru
+  - Remote
+  min_salary_lpa: 6.0
   notice_period_days: 30
