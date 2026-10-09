@@ -1,0 +1,35 @@
+# ---------- Matching ----------
+match_threshold: 70             # only jobs scoring >= this get a tailored resume
+max_job_age_days: 7             # only jobs posted in the last 7 days
+skip_if_date_unknown: true      # skip postings with no parsable date
+score_weights:                  # must sum to 1.0
+  mandatory_skills: 0.6
+  nice_to_have_skills: 0.2
+  experience: 0.2
+
+# ---------- Applying ----------
+mode: review                    # review = you approve each apply | auto = apply automatically
+max_applications_per_day: 25
+per_portal_cap: 10
+max_jobs_per_run: 30            # max job pages opened per portal per run
+
+# ---------- Resume ----------
+locked_sections: [experience, education]
+editable_sections: [skills, projects]
+max_keyword_repeats: 2          # keyword-stuffing limit per project description
+
+# ---------- Portals ----------
+portals:
+  naukri:
+    enabled: true
+    headless: false             # Naukri often blocks headless browsers
+    pages_per_search: 2
+    min_delay_seconds: 3        # human-like pacing between page loads
+    max_delay_seconds: 7
+
+# ---------- Email ----------
+send_daily_report: true
+email_each_resume: false        # also email every tailored resume to yourself
+send_recruiter_emails: draft_only
+
+blacklist_companies: []

@@ -1,0 +1,58 @@
+[
+  {
+    "external_id": "S-1001",
+    "title": "Python Backend Developer",
+    "company": "Acme Fintech",
+    "url": "https://example.com/jobs/S-1001",
+    "location": "Bengaluru",
+    "experience_text": "3-6 Yrs",
+    "salary_text": "15-22 Lacs PA",
+    "posted_text": "2 days ago",
+    "tags": ["Python", "FastAPI", "PostgreSQL", "AWS", "Docker"],
+    "description": "We are hiring a Python Backend Developer to build payment APIs.\nMust have: Python, FastAPI or Django, PostgreSQL, REST APIs, cloud experience (AWS or GCP).\nGood to have: Docker, Kafka, Redis.\nExperience: 3-6 years.\nSend your resume to talent@acmefintech.example"
+  },
+  {
+    "external_id": "S-1002",
+    "title": "Backend Engineer - Data Platform",
+    "company": "Nimbus Analytics",
+    "url": "https://example.com/jobs/S-1002",
+    "location": "Remote",
+    "experience_text": "4-8 Yrs",
+    "posted_text": "Just now",
+    "tags": ["Python", "GCP", "SQL", "Pandas"],
+    "description": "Build data pipelines on Google Cloud. Required: Python, SQL, GCP, Pandas, REST APIs. Nice to have: Airflow, Docker. 4+ years of experience."
+  },
+  {
+    "external_id": "S-1003",
+    "title": "Senior Java Developer",
+    "company": "Legacy Systems Ltd",
+    "url": "https://example.com/jobs/S-1003",
+    "location": "Pune",
+    "experience_text": "6-10 Yrs",
+    "posted_text": "1 day ago",
+    "tags": ["Java", "Spring Boot", "Microservices", "Kubernetes"],
+    "description": "Senior Java developer. Must have Java 17, Spring Boot, Microservices, Kubernetes. 6-10 years of experience."
+  },
+  {
+    "external_id": "S-1004",
+    "title": "Python Developer",
+    "company": "Old Postings Inc",
+    "url": "https://example.com/jobs/S-1004",
+    "location": "Bengaluru",
+    "experience_text": "2-5 Yrs",
+    "posted_text": "30+ days ago",
+    "tags": ["Python", "Django"],
+    "description": "Python and Django developer. Must have Python, Django, SQL."
+  },
+  {
+    "external_id": "S-1005",
+    "title": "Automation Engineer (Python)",
+    "company": "Undated Corp",
+    "url": "https://example.com/jobs/S-1005",
+    "location": "Hyderabad",
+    "experience_text": "2-4 Yrs",
+    "posted_text": "",
+    "tags": ["Python", "Playwright"],
+    "description": "Browser automation with Python and Playwright."
+  }
+]

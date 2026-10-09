@@ -1,0 +1,19 @@
+# LLM
+google-genai>=1.30
+# MCP (server + client)
+mcp>=1.12
+# Core
+pydantic>=2.7
+pyyaml>=6.0
+python-dotenv>=1.0
+python-dateutil>=2.9
+# Browser automation + PDF rendering
+playwright>=1.45
+# Resume templates
+jinja2>=3.1
+# Reports
+openpyxl>=3.1
+# CLI
+typer>=0.12
+rich>=13.7
+pytest>=8.0

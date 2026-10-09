@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ p.name }} - Resume</title>
+<style>
+  body { font-family: "Segoe UI", Calibri, Arial, sans-serif; font-size: 10.5pt; color: #222; line-height: 1.38; margin: 0; }
+  h1 { font-size: 20pt; margin: 0 0 2px; letter-spacing: .3px; }
+  .contact { font-size: 9.5pt; color: #444; }
+  .contact a { color: #1a5fb4; text-decoration: none; }
+  h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: 1px; color: #1a5fb4;
+       border-bottom: 1px solid #c8d3e0; padding-bottom: 2px; margin: 14px 0 6px; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .muted { color: #555; font-size: 9.5pt; }
+  .item { margin-bottom: 8px; page-break-inside: avoid; }
+  .item b { font-size: 10.5pt; }
+  ul { margin: 3px 0 0 18px; padding: 0; }
+  li { margin-bottom: 2px; }
+  .skills span { display: inline-block; margin: 0 6px 3px 0; }
+  .skills span:not(:last-child)::after { content: " •"; color: #999; margin-left: 6px; }
+</style>
+</head>
+<body>
+  <h1>{{ p.name }}</h1>
+  <div class="contact">
+    {{ p.email }}{% if p.phone %} · {{ p.phone }}{% endif %}{% if p.location %} · {{ p.location }}{% endif %}
+    {% if p.linkedin %} · <a href="{{ p.linkedin }}">LinkedIn</a>{% endif %}
+    {% if p.github %} · <a href="{{ p.github }}">GitHub</a>{% endif %}
+    {% if p.portfolio %} · <a href="{{ p.portfolio }}">Portfolio</a>{% endif %}
+  </div>
+
+  <h2>Summary</h2>
+  <div>{{ summary }}</div>
+
+  <h2>Skills</h2>
+  <div class="skills">{% for s in skills %}<span>{{ s }}</span>{% endfor %}</div>
+
+  <h2>Experience</h2>
+  {% for e in experience %}
+  <div class="item">
+    <div class="row"><span><b>{{ e.title }}</b> · {{ e.company }}{% if e.location %}, {{ e.location }}{% endif %}</span>
+      <span class="muted">{{ e.start }} – {{ e.end }}</span></div>
+    {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+  </div>
+  {% endfor %}
+
+  <h2>Projects</h2>
+  {% for pr in projects %}
+  <div class="item">
+    <div class="row"><span><b>{{ pr.name }}</b>{% if pr.github %} · <a href="{{ pr.github }}">GitHub</a>{% endif %}</span>
+      <span class="muted">{{ pr.tech | join(", ") }}</span></div>
+    <div>{{ pr.description }}</div>
+  </div>
+  {% endfor %}
+
+  <h2>Education</h2>
+  {% for ed in education %}
+  <div class="row"><span><b>{{ ed.degree }}</b> · {{ ed.institution }}</span><span class="muted">{{ ed.year }}</span></div>
+  {% endfor %}
+</body>
+</html>
