@@ -262,7 +262,3 @@ blacklist_companies: []
 - **Salary & location rules**, company blacklist/whitelist.
 - **Screening-answer memory** – reuse approved answers (notice period, CTC, relocation).
 - **Interview prep pack** – likely questions based on the JD and your projects.
-
-## 📄 License
-
-MIT (or your choice)
